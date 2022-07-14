@@ -1,5 +1,5 @@
 # The Guessing Game - Information 
-
+- Packages: Numpy and Sys 
 - Overview: 
   - The computer randomly selects a number between [0,10] inclusive. The user inputs values until the correct number is chosen or until the user gives up. 
 
