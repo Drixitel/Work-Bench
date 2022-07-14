@@ -84,7 +84,7 @@ while status != 'quit':
                     print(ask_for_number)
 
                     #Congradualtion's Statement 
-                    correct = f"Congrats! You guessed my number! : {computer_stored_value[0]}"
+                    correct = f"\n\n\t\tCongrats! You guessed my number! : {computer_stored_value[0]}"
                     print(correct)
 
                     #Ask to play again
@@ -96,13 +96,13 @@ while status != 'quit':
                     while play_again_question != 'completed':
                         condition_to_play_again = input("Type: (Y/N)  ").upper()
 
-                        if condition_to_play_again == 'N' or condition_to_play == 'No':
+                        if condition_to_play_again == 'N' or condition_to_play_again == 'NO':
                             print(condition_to_play_again)
                             answer = 'correct'
                             number_select = 'off'
                             play_again_question ='completed'
 
-                        elif condition_to_play_again == 'Y' or condition_to_play =='YES':
+                        elif condition_to_play_again == 'Y' or condition_to_play_again =='YES':
                             print(condition_to_play_again)
                             print('Sweet!\n Give me a sec to think ... ... ... ok guess!')
                             answer = 'correct'
