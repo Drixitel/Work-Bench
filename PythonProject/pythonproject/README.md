@@ -1,37 +1,43 @@
-# Guessing Game 
-- Computer selects a random number from 0-100 
-  - Genertate random number 
-  - Store random number per game 
-  - This operation should only happen once per game 
-- User inputs a value as a guess
-- Computer takes input and checks against the value stored 
-  - If it is the number the User wins 
-  - Elif it is not the number 
-    - Ask for a new input 
+# The Guessing Game - Information 
 
-# Additional 
-- store the inital guess and display it to the user 
-- store the guesses and if the guess appears again show a message of it being a repeat
-- each wrong guess displays a unique "wrong answer" output 
-- Tell the user they input the wrong format (string, float, symbol)
+- Overview: 
+  - The computer randomly selects a number between [0,10] inclusive. The user inputs values until the correct number is chosen or until the user gives up. 
 
-# Template 
-- `While loop` to keep the game running 
-  - `Exit with a command` if the user no longer want to play 
-  - `While the game still plays`: 
-    - Have the computer generate a random number (once)
-    - `Store` the number in a list/Directory
-    - `Announce` to the user that a number was selected 
-    - `Ask` the user to give a guess
-      - `Store` the number given 
-      - Compare the number to stored Computer value (CV)
-        - If statements: 
-          - `if guess == CV` return a congradualtions statement 
-            - End game OR Ask if the user would like to play again 
-              - (This might be difficult bc I need to figure out how to retart the program)
-          - `elif guess != CV `return a statement to the user to guess again 
-            - Statement: 
-              - Store the value guessed 
-              - Return: "Guess again! Values guessed so far: [list of stored guess values]"
-- Need to add warnings for out of range guesses 
-  - not a number guesses 
+# Mechanics 
+- 4 While loops and several conditions 
+- Introduce the game with a print statement outside of the while loop. 
+- `WHILE - 1`: 
+  - This loop will keep the game running so long as `status != "quit"` 
+  - This loop has one `asking input` and `3 conditions`
+    - `asking input`: Does the user wish to play: Y/N/invalid  
+    - if No- Break
+    - if invalid - loop again 
+    - if yes continue into the next while loop 
+- `WHILE - 2`: 
+  - This loop will allow the computer to randomly generate a number and store it for comparison testing. It will break if `input_number == "off"`.
+  Following this, the user moves into the while loop to check for the correct ansqwer. 
+- `WHILE - 3`: 
+  - This loop has one `asking input` and `3 conditions` and ends when `answer == "correct"`
+    - `asking input`: Guess a number [0,10]
+    - if the user wants to give up they type `quit`, causing several breaks in the loops to end the game. 
+    - if the input is wrong the value is checked. If it is a number it will prompt a random `incorrect statement`. If it is not a number it will prompt an `error message` and loop the question again. 
+    - if the input is correct. The user gets a `congradulations statement` and is moved into the next while loop. 
+- `WHILE - 4`: 
+  - This loop checks if the user wants to play again. 
+  - This has an `asking input` and `3 conditions`. Breaks when `play_again_question == "completed"`.
+    - `asking input`: Y/N/Invalid (play again?)
+      - if N several breaks occur to exit the game 
+      - if invalid the loop repeats until a valid option is selected 
+      - if Y several breaks occur: 
+        -  `play_again_question == "completed"`
+        -  `answer == "correct"`
+        - but `input_number != "off"` and the computer will guess a new number, replacing the old one and continue into game until the user quits or selects NO in a prompt. 
+
+# Additions 
+- Each wrong answer recieves a unique and random `incorrect response`
+# Future Potentials 
+- Store the number given by the user and let them know if they've already selected a previous number. 
+- Add more interactive templates 
+- adjust how long it takes the program to respond. 
+  - currently instaneous 
+  - would be nice to slow it down to make it seem as tho the computer is thinking. 
