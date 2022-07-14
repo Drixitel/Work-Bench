@@ -40,12 +40,12 @@ while status != 'quit':
     condition_to_play = input("Type: (Y/N)  ").upper()
 
     #Check input to continue game
-    if condition_to_play == "N":
+    if condition_to_play == "N" or condition_to_play == 'NO':
         #Leave the Game
         print(condition_to_play)
         status = 'quit'
 
-    elif condition_to_play == "Y": 
+    elif condition_to_play == "Y" or condition_to_play == 'YES': 
         # continue game 
         print(condition_to_play) #prints Y
 
@@ -96,13 +96,13 @@ while status != 'quit':
                     while play_again_question != 'completed':
                         condition_to_play_again = input("Type: (Y/N)  ").upper()
 
-                        if condition_to_play_again == 'N':
+                        if condition_to_play_again == 'N' or condition_to_play == 'No':
                             print(condition_to_play_again)
                             answer = 'correct'
                             number_select = 'off'
                             play_again_question ='completed'
 
-                        elif condition_to_play_again == 'Y':
+                        elif condition_to_play_again == 'Y' or condition_to_play =='YES':
                             print(condition_to_play_again)
                             print('Sweet!\n Give me a sec to think ... ... ... ok guess!')
                             answer = 'correct'
@@ -122,7 +122,7 @@ while status != 'quit':
                         print(ask_for_number)
                         
                         #Statements for incorrect values
-                        incorrect = f"{ask_for_number} is not my number. Try again."
+                        incorrect = f"{ask_for_number} is not my number. Try agian."
                         incorrect1 = f"Nope! {ask_for_number} is not my number. Try agian."
                         incorrect2 = f"Woah, not even close! {incorrect}"
                         incorrect3 = f"Seems like this game might be too difficult for you? {incorrect}"
