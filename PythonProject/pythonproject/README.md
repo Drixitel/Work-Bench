@@ -32,7 +32,7 @@
         -  `play_again_question == "completed"`
         -  `answer == "correct"`
         - but `input_number != "off"` and the computer will guess a new number, replacing the old one and continue into game until the user quits or selects NO in a prompt. 
-
+- Once all the while loops are broken, display the Goodbye statement. 
 # Additions 
 - Each wrong answer recieves a unique and random `incorrect response`
 # Future Potentials 
