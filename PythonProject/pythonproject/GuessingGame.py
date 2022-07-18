@@ -11,7 +11,6 @@ import numpy as np
 import sys
 
 #Initial Statements
- 
 introduction = f" \t\t\t~ Welcome to the Guessing Game ~ \n"
 introduction += f'\t\tI will choose a number at random, and you will guess!'
 
