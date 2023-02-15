@@ -5,10 +5,11 @@ description = ""
 authors = ["Drixitel <mpmunoz1993@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9,<3.12"
 numpy = "^1.22.4"
-jupyterlab = "^3.4.3"
-notebook = "^6.4.12"
+matplotlib = "^3.7.0"
+scipy = "^1.10.0"
+notebook = "^6.5.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
