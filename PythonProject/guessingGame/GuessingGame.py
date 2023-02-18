@@ -1,7 +1,7 @@
 # You now have The Guessing Game! 
 # Simple & easy-to-use because it's just a bunch of  WHILE LOOPS and CONDITIONS!
 
-# Made by a slow learner: Michelle Pichardo Munoz
+# Made by: Michelle Pichardo Munoz
 # Date: 7/12/2022 
 # Time completed: 8:00 PM
 
