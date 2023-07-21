@@ -1,0 +1,194 @@
+def fib_C(n):
+    n :: int
+    r0 :: native_int
+    r1, r2, r3 :: bit
+    r4, r5, r6, r7, r8, r9 :: int
+L0:
+    r0 = n & 1
+    r1 = r0 != 0
+    if r1 goto L1 else goto L2 :: bool
+L1:
+    r2 = CPyTagged_IsLt_(2, n)
+    if r2 goto L4 else goto L3 :: bool
+L2:
+    r3 = n <= 2 :: signed
+    if r3 goto L3 else goto L4 :: bool
+L3:
+    inc_ref n :: int
+    return n
+L4:
+    r4 = CPyTagged_Subtract(n, 4)
+    r5 = fib_C(r4)
+    dec_ref r4 :: int
+    if is_error(r5) goto L7 (error at fib_C:21) else goto L5
+L5:
+    r6 = CPyTagged_Subtract(n, 2)
+    r7 = fib_C(r6)
+    dec_ref r6 :: int
+    if is_error(r7) goto L8 (error at fib_C:21) else goto L6
+L6:
+    r8 = CPyTagged_Add(r5, r7)
+    dec_ref r5 :: int
+    dec_ref r7 :: int
+    return r8
+L7:
+    r9 = <error> :: int
+    return r9
+L8:
+    dec_ref r5 :: int
+    goto L7
+
+def __top_level__():
+    r0, r1 :: object
+    r2 :: bit
+    r3 :: str
+    r4 :: object
+    r5 :: object_ptr
+    r6 :: object_ptr[1]
+    r7 :: c_ptr
+    r8 :: native_int[1]
+    r9 :: c_ptr
+    r10 :: object
+    r11 :: dict
+    r12, r13 :: str
+    r14 :: bit
+    r15 :: object
+    r16 :: str
+    r17, r18 :: object
+    r19 :: float
+    r20 :: bit
+    r21 :: dict
+    r22 :: str
+    r23 :: object
+    r24 :: int32
+    r25 :: bit
+    r26 :: object
+    r27 :: int
+    r28 :: object
+    r29 :: str
+    r30, r31 :: object
+    r32 :: float
+    r33 :: bit
+    r34 :: dict
+    r35 :: str
+    r36, r37 :: object
+    r38 :: float
+    r39 :: bit
+    r40 :: float
+    r41 :: object
+    r42 :: str
+    r43, r44, r45 :: object
+    r46 :: object[1]
+    r47 :: object_ptr
+    r48 :: object
+    r49 :: None
+L0:
+    r0 = builtins :: module
+    r1 = load_address _Py_NoneStruct
+    r2 = r0 != r1
+    if r2 goto L3 else goto L1 :: bool
+L1:
+    r3 = 'builtins'
+    r4 = PyImport_Import(r3)
+    if is_error(r4) goto L20 (error at <module>:-1) else goto L2
+L2:
+    builtins = r4 :: module
+    dec_ref r4
+L3:
+    r5 = load_address time :: module
+    r6 = [r5]
+    r7 = load_address r6
+    r8 = [1]
+    r9 = load_address r8
+    r10 = (('time', 'time', 'time'),)
+    r11 = fib.globals :: static
+    r12 = 'fib.py'
+    r13 = '<module>'
+    r14 = CPyImport_ImportMany(r10, r7, r11, r12, r13, r9)
+    if not r14 goto L20 else goto L4 :: bool
+L4:
+    r15 = time :: module
+    r16 = 'perf_counter'
+    r17 = CPyObject_GetAttr(r15, r16)
+    if is_error(r17) goto L20 (error at <module>:27) else goto L5
+L5:
+    r18 = _PyObject_Vectorcall(r17, 0, 0, 0)
+    dec_ref r17
+    if is_error(r18) goto L20 (error at <module>:27) else goto L6
+L6:
+    r19 = unbox(float, r18)
+    dec_ref r18
+    r20 = r19 == -113.0
+    if r20 goto L8 else goto L7 :: bool
+L7:
+    r21 = fib.globals :: static
+    r22 = 't0'
+    r23 = box(float, r19)
+    r24 = CPyDict_SetItem(r21, r22, r23)
+    dec_ref r23
+    r25 = r24 >= 0 :: signed
+    if not r25 goto L20 (error at <module>:27) else goto L9 :: bool
+L8:
+    r26 = PyErr_Occurred()
+    if not is_error(r26) goto L20 (error at <module>:27) else goto L7
+L9:
+    r27 = fib_C(64)
+    if is_error(r27) goto L20 (error at <module>:29) else goto L21
+L10:
+    r28 = time :: module
+    r29 = 'perf_counter'
+    r30 = CPyObject_GetAttr(r28, r29)
+    if is_error(r30) goto L20 (error at <module>:30) else goto L11
+L11:
+    r31 = _PyObject_Vectorcall(r30, 0, 0, 0)
+    dec_ref r30
+    if is_error(r31) goto L20 (error at <module>:30) else goto L12
+L12:
+    r32 = unbox(float, r31)
+    dec_ref r31
+    r33 = r32 == -113.0
+    if r33 goto L14 else goto L13 :: bool
+L13:
+    r34 = fib.globals :: static
+    r35 = 't0'
+    r36 = CPyDict_GetItem(r34, r35)
+    if is_error(r36) goto L20 (error at <module>:30) else goto L15
+L14:
+    r37 = PyErr_Occurred()
+    if not is_error(r37) goto L20 (error at <module>:30) else goto L13
+L15:
+    r38 = unbox(float, r36)
+    dec_ref r36
+    r39 = r38 == -113.0
+    if r39 goto L17 else goto L16 :: bool
+L16:
+    r40 = r32 - r38
+    r41 = builtins :: module
+    r42 = 'print'
+    r43 = CPyObject_GetAttr(r41, r42)
+    if is_error(r43) goto L20 (error at <module>:30) else goto L18
+L17:
+    r44 = PyErr_Occurred()
+    if not is_error(r44) goto L20 (error at <module>:30) else goto L16
+L18:
+    r45 = box(float, r40)
+    r46 = [r45]
+    r47 = load_address r46
+    r48 = _PyObject_Vectorcall(r43, r47, 1, 0)
+    dec_ref r43
+    if is_error(r48) goto L22 (error at <module>:30) else goto L23
+L19:
+    dec_ref r45
+    return 1
+L20:
+    r49 = <error> :: None
+    return r49
+L21:
+    dec_ref r27 :: int
+    goto L10
+L22:
+    dec_ref r45
+    goto L20
+L23:
+    dec_ref r48
+    goto L19

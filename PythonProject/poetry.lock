@@ -1216,6 +1216,21 @@ files = [
 traitlets = "*"
 
 [[package]]
+name = "memory-profiler"
+version = "0.61.0"
+description = "A module for monitoring memory usage of a python program"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "memory_profiler-0.61.0-py3-none-any.whl", hash = "sha256:400348e61031e3942ad4d4109d18753b2fb08c2f6fb8290671c5513a34182d84"},
+    {file = "memory_profiler-0.61.0.tar.gz", hash = "sha256:4e5b73d7864a1d1292fb76a03e82a3e78ef934d06828a698d9dada76da2067b0"},
+]
+
+[package.dependencies]
+psutil = "*"
+
+[[package]]
 name = "mistune"
 version = "3.0.1"
 description = "A sane and fast Markdown parser with useful plugins and renderers"
@@ -2428,6 +2443,27 @@ files = [
 ]
 
 [[package]]
+name = "tqdm"
+version = "4.65.0"
+description = "Fast, Extensible Progress Meter"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "tqdm-4.65.0-py3-none-any.whl", hash = "sha256:c4f53a17fe37e132815abceec022631be8ffe1b9381c2e6e30aa70edc99e9671"},
+    {file = "tqdm-4.65.0.tar.gz", hash = "sha256:1871fb68a86b8fb3b59ca4cdd3dcccbc7e6d613eeed31f4c332531977b89beb5"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[package.extras]
+dev = ["py-make (>=0.1.0)", "twine", "wheel"]
+notebook = ["ipywidgets (>=6)"]
+slack = ["slack-sdk"]
+telegram = ["requests"]
+
+[[package]]
 name = "traitlets"
 version = "5.9.0"
 description = "Traitlets Python configuration system"
@@ -2570,4 +2606,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<3.12"
-content-hash = "6cbf52bbc0d59d62a3b3021f3c478e1aa69df89fb91b2c5d284768538610a876"
+content-hash = "5d1079a96aad11acd1f384e30209f5bbd9cfa892ed3b86172eeba87660a9d218"
