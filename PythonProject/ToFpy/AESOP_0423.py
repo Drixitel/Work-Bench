@@ -5,19 +5,25 @@
 # Copyright UCSC 2023
 #############################
 
+# Testing by Michelle P 
+
 import numpy as np
 import pandas as pd
-from tqdm import tqdm
-import random
-from time import perf_counter
-from datetime import timedelta, datetime
+from tqdm import tqdm # Progress bar
+import random # Generator 
+from time import perf_counter # float value of time in seconds 
+from datetime import timedelta, datetime # microsecond resolution for deltas (time,date)
 from multiprocessing import Pool, cpu_count, freeze_support
 from memory_profiler import profile
 
 
 class Simulation:
     
-    def __init__(self):
+    def __init__(self): 
+        # This is a constructor
+        #   it sets up all the constants and defaults 
+        #   There are NO functions here
+        #   it also sends prints to the user about them
         #############################
         # CONSTANTS
         #############################
