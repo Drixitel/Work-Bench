@@ -1,0 +1,160 @@
+def do_something(seconds):
+    seconds :: int
+    r0, r1, r2, r3 :: str
+    r4 :: object
+    r5 :: str
+    r6 :: object
+    r7 :: object[1]
+    r8 :: object_ptr
+    r9, r10 :: object
+    r11 :: str
+    r12, r13 :: object
+    r14 :: object[1]
+    r15 :: object_ptr
+    r16 :: object
+    r17, r18, r19, r20 :: str
+L0:
+    r0 = 'Sleeping '
+    r1 = CPyTagged_Str(seconds)
+    if is_error(r1) goto L9 (error at do_something:4) else goto L1
+L1:
+    r2 = ' second...'
+    r3 = CPyStr_Build(3, r0, r1, r2)
+    dec_ref r1
+    if is_error(r3) goto L9 (error at do_something:4) else goto L2
+L2:
+    r4 = builtins :: module
+    r5 = 'print'
+    r6 = CPyObject_GetAttr(r4, r5)
+    if is_error(r6) goto L10 (error at do_something:4) else goto L3
+L3:
+    r7 = [r3]
+    r8 = load_address r7
+    r9 = _PyObject_Vectorcall(r6, r8, 1, 0)
+    dec_ref r6
+    if is_error(r9) goto L10 (error at do_something:4) else goto L11
+L4:
+    dec_ref r3
+    r10 = time :: module
+    r11 = 'sleep'
+    r12 = CPyObject_GetAttr(r10, r11)
+    if is_error(r12) goto L9 (error at do_something:5) else goto L5
+L5:
+    inc_ref seconds :: int
+    r13 = box(int, seconds)
+    r14 = [r13]
+    r15 = load_address r14
+    r16 = _PyObject_Vectorcall(r12, r15, 1, 0)
+    dec_ref r12
+    if is_error(r16) goto L12 (error at do_something:5) else goto L13
+L6:
+    dec_ref r13
+    r17 = 'Done Sleeping...'
+    r18 = CPyTagged_Str(seconds)
+    if is_error(r18) goto L9 (error at do_something:6) else goto L7
+L7:
+    r19 = CPyStr_Build(2, r17, r18)
+    dec_ref r18
+    if is_error(r19) goto L9 (error at do_something:6) else goto L8
+L8:
+    return r19
+L9:
+    r20 = <error> :: str
+    return r20
+L10:
+    dec_ref r3
+    goto L9
+L11:
+    dec_ref r9
+    goto L4
+L12:
+    dec_ref r13
+    goto L9
+L13:
+    dec_ref r16
+    goto L6
+
+def fib_C(n):
+    n :: int
+    r0 :: native_int
+    r1, r2, r3 :: bit
+    r4, r5, r6, r7, r8, r9 :: int
+L0:
+    r0 = n & 1
+    r1 = r0 != 0
+    if r1 goto L1 else goto L2 :: bool
+L1:
+    r2 = CPyTagged_IsLt_(2, n)
+    if r2 goto L4 else goto L3 :: bool
+L2:
+    r3 = n <= 2 :: signed
+    if r3 goto L3 else goto L4 :: bool
+L3:
+    inc_ref n :: int
+    return n
+L4:
+    r4 = CPyTagged_Subtract(n, 4)
+    r5 = fib_C(r4)
+    dec_ref r4 :: int
+    if is_error(r5) goto L7 (error at fib_C:12) else goto L5
+L5:
+    r6 = CPyTagged_Subtract(n, 2)
+    r7 = fib_C(r6)
+    dec_ref r6 :: int
+    if is_error(r7) goto L8 (error at fib_C:12) else goto L6
+L6:
+    r8 = CPyTagged_Add(r5, r7)
+    dec_ref r5 :: int
+    dec_ref r7 :: int
+    return r8
+L7:
+    r9 = <error> :: int
+    return r9
+L8:
+    dec_ref r5 :: int
+    goto L7
+
+def __top_level__():
+    r0, r1 :: object
+    r2 :: bit
+    r3 :: str
+    r4 :: object
+    r5 :: object_ptr
+    r6 :: object_ptr[1]
+    r7 :: c_ptr
+    r8 :: native_int[1]
+    r9 :: c_ptr
+    r10 :: object
+    r11 :: dict
+    r12, r13 :: str
+    r14 :: bit
+    r15 :: None
+L0:
+    r0 = builtins :: module
+    r1 = load_address _Py_NoneStruct
+    r2 = r0 != r1
+    if r2 goto L3 else goto L1 :: bool
+L1:
+    r3 = 'builtins'
+    r4 = PyImport_Import(r3)
+    if is_error(r4) goto L5 (error at <module>:-1) else goto L2
+L2:
+    builtins = r4 :: module
+    dec_ref r4
+L3:
+    r5 = load_address time :: module
+    r6 = [r5]
+    r7 = load_address r6
+    r8 = [1]
+    r9 = load_address r8
+    r10 = (('time', 'time', 'time'),)
+    r11 = mod.globals :: static
+    r12 = 'mod.py'
+    r13 = '<module>'
+    r14 = CPyImport_ImportMany(r10, r7, r11, r12, r13, r9)
+    if not r14 goto L5 else goto L4 :: bool
+L4:
+    return 1
+L5:
+    r15 = <error> :: None
+    return r15
