@@ -1,15 +1,26 @@
-# Testing by Michelle P
-# Original file by Liam Branch
+# Testing by Michelle P 9/4/23
+""" Keep Multiprocessing 
+    1. add: typesetting
+    2. Move run() out of Simulation Class   
+    3. add: Pool.close() and Pool.join() in that order
+    4. Compile module program 
+"""
 
-import numpy as np
-import pandas as pd
-from tqdm import tqdm # Progress bar
-import random # Generator 
-from time import perf_counter # float value of time in seconds 
-from datetime import timedelta, datetime # microsecond resolution for deltas (time,date)
+# Installs Needed 
+import numpy as np #analysis
+import pandas as pd #analysis
+from tqdm import tqdm #progressbar
+# Native 
+import random #generator 
+from time import perf_counter, perf_counter_ns #timing 
+from datetime import timedelta, datetime #timing
+from memory_profiler import profile #memory checks
+
+# Testing Multiprocessing 
 from multiprocessing import Pool, cpu_count, freeze_support
-from memory_profiler import profile
+from concurrent.futures import ProcessPoolExecutor
 
+# Typesetting 
 from typing import Union, List
 from numpy.typing import ArrayLike
 
