@@ -1,0 +1,159 @@
+def Bag.__init__(self):
+    self :: mod.Bag
+    r0 :: list
+    r1 :: None
+L0:
+    r0 = PyList_New(0)
+    if is_error(r0) goto L2 (error at __init__:7) else goto L1
+L1:
+    self.data = r0
+    self.x = 6
+    return 1
+L2:
+    r1 = <error> :: None
+    return r1
+
+def Bag.add(self, x):
+    self :: mod.Bag
+    x :: union[object, bool, int, float, str, bytes]
+    r0 :: list
+    r1 :: i32
+    r2 :: bit
+    r3 :: None
+L0:
+    r0 = self.data
+    r1 = PyList_Append(r0, x)
+    dec_ref r0
+    r2 = r1 >= 0 :: signed
+    if not r2 goto L2 (error at add:11) else goto L1 :: bool
+L1:
+    return 1
+L2:
+    r3 = <error> :: None
+    return r3
+
+def Bag.addtwice(self, x):
+    self :: mod.Bag
+    x :: union[object, bool, int, float, str, bytes]
+    r0, r1, r2 :: None
+L0:
+    r0 = self.add(x)
+    if is_error(r0) goto L3 (error at addtwice:14) else goto L1
+L1:
+    r1 = self.add(x)
+    if is_error(r1) goto L3 (error at addtwice:15) else goto L2
+L2:
+    return 1
+L3:
+    r2 = <error> :: None
+    return r2
+
+def __top_level__():
+    r0, r1 :: object
+    r2 :: bit
+    r3 :: str
+    r4 :: object
+    r5 :: object_ptr
+    r6 :: object_ptr[1]
+    r7 :: c_ptr
+    r8 :: native_int[1]
+    r9 :: c_ptr
+    r10 :: object
+    r11 :: dict
+    r12, r13 :: str
+    r14 :: bit
+    r15 :: object
+    r16 :: str
+    r17 :: dict
+    r18, r19 :: object
+    r20 :: str
+    r21 :: dict
+    r22, r23 :: object
+    r24 :: str
+    r25, r26 :: object
+    r27 :: bool
+    r28, r29, r30 :: str
+    r31 :: tuple
+    r32 :: i32
+    r33 :: bit
+    r34 :: dict
+    r35 :: str
+    r36 :: i32
+    r37 :: bit
+    r38 :: None
+L0:
+    r0 = builtins :: module
+    r1 = load_address _Py_NoneStruct
+    r2 = r0 != r1
+    if r2 goto L3 else goto L1 :: bool
+L1:
+    r3 = 'builtins'
+    r4 = PyImport_Import(r3)
+    if is_error(r4) goto L12 (error at <module>:-1) else goto L2
+L2:
+    builtins = r4 :: module
+    dec_ref r4
+L3:
+    r5 = load_address numpy :: module
+    r6 = [r5]
+    r7 = load_address r6
+    r8 = [1]
+    r9 = load_address r8
+    r10 = (('numpy', 'numpy', 'np'),)
+    r11 = mod.globals :: static
+    r12 = 'mod.py'
+    r13 = '<module>'
+    r14 = CPyImport_ImportMany(r10, r7, r11, r12, r13, r9)
+    if not r14 goto L12 else goto L4 :: bool
+L4:
+    r15 = ('Union', 'List')
+    r16 = 'typing'
+    r17 = mod.globals :: static
+    r18 = CPyImport_ImportFromMany(r16, r15, r15, r17)
+    if is_error(r18) goto L12 (error at <module>:2) else goto L5
+L5:
+    typing = r18 :: module
+    dec_ref r18
+    r19 = ('ArrayLike',)
+    r20 = 'numpy.typing'
+    r21 = mod.globals :: static
+    r22 = CPyImport_ImportFromMany(r20, r19, r19, r21)
+    if is_error(r22) goto L12 (error at <module>:3) else goto L6
+L6:
+    numpy.typing = r22 :: module
+    dec_ref r22
+    r23 = <error> :: object
+    r24 = 'mod'
+    r25 = mod.Bag_template :: type
+    r26 = CPyType_FromTemplate(r25, r23, r24)
+    if is_error(r26) goto L12 (error at <module>:5) else goto L7
+L7:
+    r27 = Bag_trait_vtable_setup()
+    if is_error(r27) goto L13 (error at <module>:-1) else goto L8
+L8:
+    r28 = '__mypyc_attrs__'
+    r29 = 'data'
+    r30 = 'x'
+    r31 = PyTuple_Pack(2, r29, r30)
+    if is_error(r31) goto L13 (error at <module>:5) else goto L9
+L9:
+    r32 = PyObject_SetAttr(r26, r28, r31)
+    dec_ref r31
+    r33 = r32 >= 0 :: signed
+    if not r33 goto L13 (error at <module>:5) else goto L10 :: bool
+L10:
+    mod.Bag = r26 :: type
+    r34 = mod.globals :: static
+    r35 = 'Bag'
+    r36 = CPyDict_SetItem(r34, r35, r26)
+    dec_ref r26
+    r37 = r36 >= 0 :: signed
+    if not r37 goto L12 (error at <module>:5) else goto L11 :: bool
+L11:
+    return 1
+L12:
+    r38 = <error> :: None
+    return r38
+L13:
+    dec_ref r26
+    goto L12

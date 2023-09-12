@@ -16,9 +16,7 @@ from memory_profiler import profile #memory checks
 from multiprocessing import Pool, cpu_count, freeze_support
 from concurrent.futures import ProcessPoolExecutor
 
-# Typesetting 
-from typing import Union, List
-from numpy.typing import ArrayLike
+# Vscode highlights and helps navigate the regression in the program 
 
 # Class Simulation: self.function()/self.variable() called within itself
 ### No self calls 
